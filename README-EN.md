@@ -1,4 +1,7 @@
 [VideoCollections] 📺
+
+[中文说明](https://github.com/xingfengwxx/VideoCollectionsCompose/blob/master/README.md)
+
 A modern video application built with Android Jetpack Compose, blending Material You design language with fluid interactive experiences. Delivers HD video playback, personalized recommendations, and social features, showcasing the elegance of Compose in complex scenarios.
 
 ✨ Core Features

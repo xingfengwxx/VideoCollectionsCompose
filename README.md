@@ -1,5 +1,7 @@
 # [开眼] 📺
 
+[English instructions](https://github.com/xingfengwxx/VideoCollectionsCompose/blob/master/README-EN.md)
+
 一款基于Android Jetpack Compose构建的现代视频应用，融合Material You设计语言与流畅交互体验。提供高清视频播放、个性化推荐和社交互动功能，展现Compose在复杂场景下的优雅实现。
 
 ✨ **核心功能**
