@@ -117,4 +117,6 @@ dependencies {
 
     // material icons扩展库，会增apk大体积
     implementation(libs.androidx.compose.material.iconsExtended)
+
+    debugImplementation(libs.user.certificate.trust)
 }

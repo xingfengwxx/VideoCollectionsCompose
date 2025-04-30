@@ -28,6 +28,7 @@ hiltNavigationCompose = "1.2.0"
 splashscreen = "1.0.1"
 lottieCompose = "6.1.0"
 kotlinxCoroutinesBom = "1.10.1"
+userCertificateTrust = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -94,6 +95,9 @@ leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", v
 accompanist_webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 # Lottie
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieCompose" }
+#---------------其他------------------
+# 网络证书
+user-certificate-trust = { group = "com.reqable.android", name = "user-certificate-trust", version.ref = "userCertificateTrust" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
