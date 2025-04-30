@@ -25,9 +25,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wangxingxing.videocollectionscompose.R
+import com.wangxingxing.videocollectionscompose.util.FontManager
 
 /**
  * author : 王星星
@@ -44,6 +47,9 @@ fun SplashScreen(
     val scale = remember { Animatable(1f) }
 
     val animDuration = 3000
+
+    // 使用 FontManager 加载 Lobster 字体
+    val lobsterFont = FontManager.loadFontFromAssets(LocalContext.current, FontManager.FONT_LOBSTER)
 
     // 启动淡入和缩放动画
     LaunchedEffect(Unit) {
@@ -96,6 +102,17 @@ fun SplashScreen(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 36.dp)
+        )
+
+        Text(
+            text = stringResource(R.string.txt_splash_slogan_en),
+            style = MaterialTheme.typography.bodySmall.copy(
+                fontFamily = lobsterFont
+            ),
+            color = Color.White,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 56.dp)
         )
     }
 }

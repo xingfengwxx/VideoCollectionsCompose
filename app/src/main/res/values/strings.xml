@@ -8,6 +8,7 @@
     <string name="tab_mine">我的</string>
 
     <string name="txt_splash_slogan">每日精选视频推荐，让你大开眼界</string>
+    <string name="txt_splash_slogan_en">Daily appetizersfor your eyes. Bon eyepétit.</string>
 
     <string name="toast_double_back_exit">再按一次退出程序</string>
 </resources>
