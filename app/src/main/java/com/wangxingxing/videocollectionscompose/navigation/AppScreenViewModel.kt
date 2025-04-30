@@ -20,8 +20,15 @@ class AppScreenViewModel @Inject constructor() : BaseViewModel<Unit>() {
     private val _isFirstUse = MutableStateFlow(CacheManager.isFirstUse())
     val isFirstUse: StateFlow<Boolean> = _isFirstUse.asStateFlow()
 
+    private val _showSplash = MutableStateFlow(true)
+    val showSplash = _showSplash.asStateFlow()
+
     fun emitFirstUse(isFirstUse: Boolean) {
         _isFirstUse.value = isFirstUse
         CacheManager.saveFirstUse(isFirstUse)
+    }
+
+    fun emitShowSplash(showSplash: Boolean) {
+        _showSplash.value = showSplash
     }
 }

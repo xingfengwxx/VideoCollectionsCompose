@@ -21,10 +21,10 @@ import com.wangxingxing.videocollectionscompose.ui.theme.VideoCollectionsCompose
  */
 @Composable
 fun AppScreen(
-    appScreenViewModel: AppScreenViewModel = hiltViewModel()
+    viewModel: AppScreenViewModel = hiltViewModel()
 ) {
     val window = LocalActivity.current?.window
-    val showSplash by appScreenViewModel.isFirstUse.collectAsState()
+    val showSplash by viewModel.showSplash.collectAsState()
 
     VideoCollectionsComposeTheme(isStatusBarTransparent = showSplash) {
         if (showSplash) {
@@ -32,7 +32,7 @@ fun AppScreen(
             window?.decorFitsSystemWindows(false)
             // 显示闪屏页
             SplashScreen {
-                appScreenViewModel.emitFirstUse(false)
+                viewModel.emitShowSplash(false)
             }
         } else {
             // 取消沉浸式状态栏

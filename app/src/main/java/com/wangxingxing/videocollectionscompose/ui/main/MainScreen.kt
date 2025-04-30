@@ -1,17 +1,25 @@
 package com.wangxingxing.videocollectionscompose.ui.main
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -64,22 +72,25 @@ val navBarItems = listOf(
 fun BottomBar(navDestination: NavDestination) {
     val navHostController = LocalNavController.current
     BottomNavigation(
-        backgroundColor = MaterialTheme.colorScheme.primary
+        backgroundColor = Color.White
     ) {
-        navBarItems.forEach { item ->
+        navBarItems.forEachIndexed() { index, item ->
+            val selected = navDestination?.hierarchy?.any { it.route == item.route } == true
             BottomNavigationItem(
-                selected = navDestination?.hierarchy?.any { it.route == item.route } == true,
+                selected = selected,
                 icon = {
                     Icon(
-                        painter = painterResource(id = item.icon),
+                        painter = painterResource(id = if (selected) item.selectIcon else item.normalIcon),
                         contentDescription = item.route,
                         modifier = Modifier
-                            .size(22.dp)
+                            .size(if (index == 2) 33.dp else 22.dp)
                             .padding(bottom = 4.dp)
+                            .then(if (index == 2) Modifier.offset(x = 0.dp, y = 10.dp) else Modifier) // 调整垂直偏移量
                     )
+
                 },
-                selectedContentColor = MaterialTheme.colorScheme.onPrimary,
-                unselectedContentColor = MaterialTheme.colorScheme.onPrimary.copy(0.3f),
+//                selectedContentColor = MaterialTheme.colorScheme.onPrimary,
+//                unselectedContentColor = MaterialTheme.colorScheme.onPrimary.copy(0.3f),
                 label = {
                     Text(
                         text = stringResource(id = item.label),
@@ -107,10 +118,10 @@ fun BottomBar(navDestination: NavDestination) {
     }
 }
 
-sealed class NavBarItem(val label: Int, val icon: Int, val route: String) {
-    object Home : NavBarItem(R.string.tab_home, R.drawable.btn_home_page_normal, Route.HOME)
-    object Community : NavBarItem(R.string.tab_community, R.drawable.btn_community_normal, Route.COMMUNITY)
-    object Upload : NavBarItem(R.string.tab_upload, R.drawable.btn_release_normal, Route.UPLOAD)
-    object Notification : NavBarItem(R.string.tab_inform, R.drawable.btn_notification_normal, Route.NOTIFICATION)
-    object Mine : NavBarItem(R.string.tab_mine, R.drawable.btn_mine_normal, Route.MINE)
+sealed class NavBarItem(@StringRes val label: Int, @DrawableRes val normalIcon: Int, @DrawableRes val selectIcon: Int, val route: String) {
+    object Home : NavBarItem(R.string.tab_home, R.drawable.btn_home_page_normal, R.drawable.btn_home_page_selected, Route.HOME)
+    object Community : NavBarItem(R.string.tab_community, R.drawable.btn_community_normal, R.drawable.btn_community_selected, Route.COMMUNITY)
+    object Upload : NavBarItem(R.string.tab_upload, R.drawable.btn_release_normal, R.drawable.btn_release_normal, Route.UPLOAD)
+    object Notification : NavBarItem(R.string.tab_inform, R.drawable.btn_notification_normal, R.drawable.btn_notification_selected, Route.NOTIFICATION)
+    object Mine : NavBarItem(R.string.tab_mine, R.drawable.btn_mine_normal, R.drawable.btn_mine_selected, Route.MINE)
 }
