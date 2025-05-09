@@ -14,7 +14,7 @@ object IpManager {
     private const val MMKV_MAP_ID = "ip"
 
     /** 常用的IP */
-    private const val DEFAULT_IP_ADDRESS_REMOTE = "https://www.wanandroid.com"     // 外网
+    private const val DEFAULT_IP_ADDRESS_REMOTE = "http://baobab.kaiyanapp.com/"     // 外网
     private const val DEFAULT_IP_ADDRESS_CHEN = "http://localhost:8095"
     private const val DEFAULT_IP_ADDRESS_LOCAL = "http://172.168.111.60:8095"     // ltp
 

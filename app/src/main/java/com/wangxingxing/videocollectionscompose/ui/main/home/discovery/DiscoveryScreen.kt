@@ -1,7 +1,9 @@
 package com.wangxingxing.videocollectionscompose.ui.main.home.discovery
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 
 /**
  * author : 王星星
@@ -10,6 +12,9 @@ import androidx.compose.runtime.Composable
  * description : 发现
  */
 @Composable
-fun DiscoveryScreen() {
-    Text("DiscoveryScreen")
+fun DiscoveryScreen(
+    viewModel: DiscoveryViewModel = hiltViewModel()
+) {
+    val data by viewModel.discoveryData.collectAsState()
+    viewModel.fetchDiscoveryData()
 }
