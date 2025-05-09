@@ -14,7 +14,7 @@ object DataRepository : Api {
 
     private val service by lazy { RetrofitManager.getService(Api::class.java)}
 
-    override suspend fun getDiscovery(): ApiResponse<Discovery> {
+    override suspend fun getDiscovery(): Discovery {
         return service.getDiscovery()
     }
 }

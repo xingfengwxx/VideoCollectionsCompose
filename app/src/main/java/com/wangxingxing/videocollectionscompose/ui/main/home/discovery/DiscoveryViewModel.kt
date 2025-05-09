@@ -15,16 +15,15 @@ import javax.inject.Inject
  * description :
  */
 @HiltViewModel
-class DiscoveryViewModel @Inject constructor() : BaseViewModel<Unit>() {
+class DiscoveryViewModel @Inject constructor() : BaseViewModel<List<Discovery.Item>>() {
 
     private val _discoveryData = MutableStateFlow(Discovery(listOf(), 0, 0, "", false))
     val discoveryData = _discoveryData.asStateFlow()
 
     fun fetchDiscoveryData() {
         launch ({
-            handleRequest(DataRepository.getDiscovery()) {
-                _discoveryData.value = it.data
-            }
+            _discoveryData.value = DataRepository.getDiscovery()
+            emitUiState(false)
         })
     }
 }

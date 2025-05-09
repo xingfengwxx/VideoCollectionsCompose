@@ -1,11 +1,17 @@
 package com.wangxingxing.videocollectionscompose.logic.data.bean
 
+import com.btpj.lib_base.ui.widgets.ProvideItemKey
+
 /**
  * 首页-发现列表，响应实体类。
  */
 data class Discovery(val itemList: List<Item>, val count: Int, val total: Int, val nextPageUrl: String?, val adExist: Boolean) : Model() {
 
-    data class Item(val `data`: Data, val type: String, val tag: Any?, val id: Int = 0, val adIndex: Int)
+    data class Item(val `data`: Data, val type: String, val tag: Any?, val id: Int = 0, val adIndex: Int) : ProvideItemKey {
+        override fun provideKey(): Int {
+            return id
+        }
+    }
 
     data class Data(
         val actionUrl: String?,
@@ -41,7 +47,7 @@ data class Discovery(val itemList: List<Item>, val count: Int, val total: Int, v
         val ifNewest: Boolean,
         val ifPgc: Boolean,
         val ifShowNotificationIcon: Boolean,
-        val image: String,
+        var image: String,
         val itemList: List<ItemX>,
         val label: Label?,
         val labelList: List<Label>,
@@ -107,7 +113,7 @@ data class Discovery(val itemList: List<Item>, val count: Int, val total: Int, v
         val description: String,
         val header: HeaderX,
         val id: Int,
-        val image: String,
+        var image: String,
         val label: Label?,
         val labelList: List<Any>,
         val shade: Boolean,

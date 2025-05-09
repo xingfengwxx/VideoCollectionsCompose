@@ -19,6 +19,21 @@ object Const {
         const val URL_PROJECT_SOURCE_CODE = "https://github.com/xingfengwxx/WanAndroidCompose"
         const val URL_WAN_ANDROID = "https://www.wanandroid.com/"
         const val URL_INTEGRAL_HELP = "https://www.wanandroid.com/blog/show/2653"
+
+        val IMG_URL_LIST = listOf(
+            "https://www4.bing.com//th?id=OHR.DunluceIreland_ZH-CN2412229757_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.FlyoverNamibia_ZH-CN2114171516_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.BeginningofSummer25Y_ZH-CN2000519236_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.SevilleNaboo_ZH-CN1065227658_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.ArchesGalaxy_ZH-CN0954505086_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.BrazilHeron_ZH-CN7200229300_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.PinkPlumeria_ZH-CN3890147555_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.FozdoIguacu2025_ZH-CN3781165595_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.GardensVillandry_ZH-CN3660934263_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.OrangeImpala_ZH-CN3417660107_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.RedwoodGrove_ZH-CN3339576686_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
+            "https://www4.bing.com//th?id=OHR.BrucePeninsula_ZH-CN3258296517_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"
+        )
     }
 
     object ParamKey {
@@ -28,6 +43,10 @@ object Const {
         const val STRUCTURE = "structure"
         const val PAGE_INDEX = "pageIndex"
         const val SEARCH_KEY = "searchKey"
+    }
+
+    sealed class HomePageType(open var type: String) {
+        data object Banner : HomePageType("horizontalScrollCard")
     }
 
     sealed class ArticleType {

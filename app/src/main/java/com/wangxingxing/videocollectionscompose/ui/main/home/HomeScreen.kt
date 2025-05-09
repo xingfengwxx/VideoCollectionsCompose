@@ -134,7 +134,9 @@ fun HomeTitleBar(modifier: Modifier = Modifier) {
                 ) {
                     if (it == pagerState.currentPage) {
                         when (it) {
-                            0 -> DiscoveryScreen()
+                            0 -> DiscoveryScreen(lazyListState = lazyListStates[0]) {
+                                // TODO: 跳转到网页
+                            }
                             1 -> RecommendScreen()
                             2 -> DailyScreen()
                         }
