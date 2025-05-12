@@ -38,8 +38,9 @@ fun DiscoveryScreen(
                 val bannerList = bannerData[0].data.itemList
                 LogUtils.json(bannerList)
                 // 接口返回的图片地址已失效，使用固定地址替代
-                val imgList = bannerList.mapIndexed { index, item ->
-                    item.data.image = Const.Config.IMG_URL_LIST[index]
+                val imgList = mutableListOf<String>()
+                bannerList.forEachIndexed { index, itemX ->
+                    imgList.add(Const.Config.IMG_URL_LIST[index])
                 }
                 LogUtils.d(imgList)
                 Banner(
